@@ -1,0 +1,61 @@
+<div *ngIf="!selectedResource; else formView" class="card">
+  <div class="card-body">No Resource selected :(</div>
+</div>
+
+<ng-template #formView>
+  <form (submit)="submitForm()">
+    <div class="alert alert-success" *ngIf="alert?.success">
+      {{ alert.success }}
+    </div>
+    <div class="alert alert-danger" *ngIf="alert?.error">
+      {{ alert.error }}
+    </div>
+    <div class="mb-3">
+      <label htmlFor="title">Title</label>
+      <input
+        [(ngModel)]="selectedResource.title"
+        name="title"
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Title How to survice in mountains"
+      />
+    </div>
+    <div class="mb-3">
+      <label htmlFor="description">Description </label>
+      <textarea
+        name="description"
+        [(ngModel)]="selectedResource.description"
+        class="form-control"
+        id="description"
+        placeholder="Very interesting description"
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="link">Link</label>
+      <input
+        name="link"
+        [(ngModel)]="selectedResource.link"
+        type="text"
+        class="form-control"
+        id="link"
+        placeholder="Just some link"
+      />
+    </div>
+    <div class="mb-3">
+      <label htmlFor="type">Resource Type</label>
+      <select
+        class="form-control"
+        name="type"
+        id="type"
+        [(ngModel)]="selectedResource.type"
+      >
+        <option [value]="type" *ngFor="let type of types">{{ type }}</option>
+      </select>
+    </div>
+    <hr class="mb-4" />
+    <button class="btn btn-primary btn-lg btn-block" type="submit">
+      Update
+    </button>
+  </form>
+</ng-template>

@@ -1,0 +1,14 @@
+<ul class="resource-list list-group mb-3" [ngClass]="theme">
+  <li
+    class="list-group-item d-flex justify-content-between lh-condensed resource-list-item"
+    *ngFor="let resource of resources"
+    (click)="onResourceSelected(resource)"
+    [ngClass]="{ 'is-active': activeId === resource._id }"
+  >
+    <div>
+      <h6 class="my-0">{{ resource.title }}</h6>
+      <small class="text-muted">{{ resource.description }}</small>
+    </div>
+    <span class="text-muted">{{ resource.type }}</span>
+  </li>
+</ul>

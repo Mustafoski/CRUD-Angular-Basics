@@ -1,0 +1,31 @@
+<button (click)="isOpen = true" class="btn btn-success mb-2">Settings</button>
+<app-modal [isOpen]="isOpen" (onClose)="isOpen = false">
+  <form action="">
+    <div class="mb-3">
+      <label htmlFor="fontSize">Font Size</label>
+      <input
+        [(ngModel)]="settings.fontSize"
+        name="fontSize"
+        type="text"
+        class="form-control"
+        id="fontSize"
+        placeholder="17"
+      />
+    </div>
+    <div class="mb-3">
+      <label htmlFor="theme">Theme</label>
+      <select
+        class="form-control"
+        name="theme"
+        id="theme"
+        [(ngModel)]="settings.theme"
+      >
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-primary" (click)="saveSettings()">
+      Submit
+    </button>
+  </form>
+</app-modal>
